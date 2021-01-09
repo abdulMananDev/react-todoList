@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import List from "./components/List";
 import FlashMessages from "./components/FlashMessages";
-
 import "./index.css";
+
 function App() {
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
   const [flashFlag, setFlashFlag] = useState(0);
   const [flashMessage, setFalshMessage] = useState("");
   const addTodo = () => {
-    if (input === "") {
+    let x = checkDuplicate();
+    console.log(x);
+    if (x) {
       setFlashFlag(prev => (prev = 1));
-      setFalshMessage(prev => (prev = "You need to Write!"));
+      setFalshMessage(prev => (prev = `${input} is Listed `));
       return;
     }
+    if (input === "") {
+      setFlashFlag(prev => (prev = 1));
+      setFalshMessage(prev => (prev = "You Forgot Something !?"));
+      return;
+    }
+
     setFlashFlag(prev => (prev = 0));
     console.log("click");
     setList(prev => prev.concat(input));
@@ -21,6 +29,10 @@ function App() {
   };
   const handleChange = e => {
     setInput(prev => (prev = e.target.value));
+  };
+  const checkDuplicate = () => {
+    console.log(input);
+    return list.find(element => element == input);
   };
   return (
     <div className="todo-container">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FlashMessages from "./FlashMessages";
+
 const List = props => {
   const [flag, setFlag] = useState(0);
   const [updateflag, setUpdateFlag] = useState(0);

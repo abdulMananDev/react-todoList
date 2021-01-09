@@ -1,12 +1,19 @@
-/* @keyframes displayNone {
+@keyframes opacity {
   0% {
-    transform: translateX(50%);
+    opacity: 0;
   }
   100% {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
   }
-} */
+}
+@keyframes transform {
+  0% {
+    top: -5%;
+  }
+  100% {
+    top: 5%;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -41,12 +48,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.89);
-  background-image: linear-gradient(
+  background-color: rgba(207, 218, 200, 0.822);
+  /* background-image: linear-gradient(
     110deg,
-    rgba(125, 149, 117, 0.603),
+    rgba(125, 149, 117, 0.322),
     rgba(207, 218, 200, 0.822)
-  );
+  ); */
   border-radius: 1rem;
   text-align: center;
 }
@@ -59,7 +66,8 @@ body {
   font-size: 1rem;
   color: #7c9473;
   outline: none;
-  border: 1.5px solid #7c9473;
+  border: 0;
+  border-bottom: 2px solid #7c9473;
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
   font-family: inherit;
@@ -69,7 +77,7 @@ body {
 ::-webkit-input-placeholder {
   font-size: 0.8rem;
   color: #cfdac8;
-  font-weight: 300;
+  font-weight: 800;
 }
 .update-btn,
 .add-btn,
@@ -81,9 +89,15 @@ body {
   border-radius: 3px;
   outline: none;
   border: none;
-
   font-weight: 800;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.update-btn:hover,
+.add-btn:hover,
+.complete-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.04);
 }
 .add-btn {
   background-color: #cfdac8;
@@ -108,7 +122,7 @@ body {
   border: 1px solid #ff4646;
 }
 .flash-message {
-  animation: displayNone 5s;
+  animation: transform 0.5s;
   position: absolute;
   top: 5%;
   left: 50%;
@@ -131,7 +145,7 @@ body {
   position: relative;
   width: 100%;
   top: 15%;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 .todo-item {
   font-size: 1rem;
@@ -139,6 +153,7 @@ body {
   margin-right: 1.5rem;
 }
 .todoList-wrapper {
+  animation: opacity 0.4s ease-out;
   position: relative;
   display: flex;
   flex-direction: row;
