@@ -18,14 +18,11 @@ const List = props => {
     );
   };
   const handleUpdate = e => {
-    // console.log(e.target.id);
-
     setIndex(prev => (prev = e.target.id));
     setUpdateFlag(prev => (prev = 1));
     setUpdationValue(prev => (prev = props.todoValue));
   };
   const handleUpdationX = e => {
-    console.log("her");
     setUpdationValue(prev => (prev = e.target.value));
   };
   const update = () => {
@@ -42,6 +39,15 @@ const List = props => {
     setUpdationValue(prev => (prev = ""));
     setUpdateFlag(prev => (prev = 0));
   };
+  useEffect(() => {
+    if (localStorage.getItem("flags")) {
+      setFlag(JSON.parse(localStorage.getItem("flags")));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("flags", JSON.stringify(flag));
+  }, [flag]);
   return (
     <>
       <>

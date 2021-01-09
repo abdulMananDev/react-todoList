@@ -8,17 +8,18 @@ function App() {
   const [list, setList] = useState([]);
   const [flashFlag, setFlashFlag] = useState(0);
   const [flashMessage, setFalshMessage] = useState("");
+
   const addTodo = () => {
-    let x = checkDuplicate();
-    console.log(x);
-    if (x) {
+    let duplicate = checkDuplicate();
+
+    if (duplicate) {
       setFlashFlag(prev => (prev = 1));
       setFalshMessage(prev => (prev = `${input} is Listed `));
       return;
     }
     if (input === "") {
       setFlashFlag(prev => (prev = 1));
-      setFalshMessage(prev => (prev = "You Forgot Something !?"));
+      setFalshMessage(prev => (prev = "You Forgot Something !!"));
       return;
     }
 
@@ -32,8 +33,18 @@ function App() {
   };
   const checkDuplicate = () => {
     console.log(input);
-    return list.find(element => element == input);
+    return list.find(element => element === input);
   };
+  useEffect(() => {
+    if (localStorage.getItem("duties")) {
+      setList(JSON.parse(localStorage.getItem("duties")));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("duties", JSON.stringify(list));
+  }, [list]);
+
   return (
     <div className="todo-container">
       {flashFlag ? <FlashMessages message={flashMessage} /> : ""}
