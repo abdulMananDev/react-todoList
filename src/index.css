@@ -33,6 +33,20 @@ body {
   color: black;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #295939;
+}
+
 /* container */
 .todo-container {
   position: relative;
@@ -46,6 +60,7 @@ body {
   );
 
   border: 1rem;
+  overflow-y: scroll;
 }
 
 /* input */
