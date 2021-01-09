@@ -1,3 +1,4 @@
+/* animations */
 @keyframes opacity {
   0% {
     opacity: 0;
@@ -14,6 +15,7 @@
     top: 5%;
   }
 }
+/* reset */
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +29,11 @@ body {
   box-sizing: border-box;
   padding: 0.4rem;
 }
+::selection {
+  color: black;
+}
 
+/* container */
 .todo-container {
   position: relative;
   width: 100%;
@@ -41,28 +47,8 @@ body {
 
   border: 1rem;
 }
-.update-wrapper {
-  position: absolute;
-  height: 80vh;
-  width: 80vw;
-  z-index: 100;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(207, 218, 200, 0.822);
-  /* background-image: linear-gradient(
-    110deg,
-    rgba(125, 149, 117, 0.322),
-    rgba(207, 218, 200, 0.822)
-  ); */
-  border-radius: 1rem;
-  text-align: center;
-}
-.update {
-  position: relative;
-  top: 40%;
-  display: inline-block;
-}
+
+/* input */
 .input {
   font-size: 1rem;
   color: #7c9473;
@@ -75,11 +61,83 @@ body {
   font-weight: 600;
   margin: 0 1rem 1rem 0;
 }
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  top: 15%;
+  margin-bottom: 1.2rem;
+}
 ::-webkit-input-placeholder {
   font-size: 0.8rem;
   color: #cfdac8;
   font-weight: 800;
 }
+
+/* updation */
+.update-wrapper {
+  position: absolute;
+  height: 80vh;
+  width: 80vw;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(207, 218, 200, 0.822);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.update {
+  position: relative;
+  top: 40%;
+  display: inline-block;
+}
+
+/* flash Messages */
+.flash-message {
+  animation: transform 0.5s;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #30475e;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* Heading */
+.heading-primary {
+  display: inline-block;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #295939;
+}
+
+/* List */
+
+.todoList-wrapper {
+  animation: opacity 0.4s ease-out;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+  top: 15%;
+  margin-bottom: 1.2rem;
+}
+.todo-item {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1.5rem;
+  color: #295939;
+}
+
+/* button code */
 .update-btn,
 .add-btn,
 .complete-btn,
@@ -121,51 +179,4 @@ body {
   background-color: #fff5c0;
   color: #ff4646;
   border: 1px solid #ff4646;
-}
-.flash-message {
-  animation: transform 0.5s;
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #30475e;
-  color: white;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-.heading-primary {
-  display: inline-block;
-  width: 100%;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #295939;
-}
-.input-wrapper {
-  position: relative;
-  width: 100%;
-  top: 15%;
-  margin-bottom: 1.2rem;
-}
-.todo-item {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-right: 1.5rem;
-  color: #295939;
-}
-.todoList-wrapper {
-  animation: opacity 0.4s ease-out;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-flow: wrap;
-  top: 15%;
-  margin-bottom: 1.2rem;
-}
-
-::selection {
-  color: black;
 }

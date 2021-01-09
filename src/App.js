@@ -4,12 +4,13 @@ import FlashMessages from "./components/FlashMessages";
 import "./index.css";
 
 function App() {
-  const [flag, setFlag] = useState(false);
+  // state
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
   const [flashFlag, setFlashFlag] = useState(0);
   const [flashMessage, setFalshMessage] = useState("");
 
+  //  adding
   const addTodo = () => {
     let duplicate = checkDuplicate();
 
@@ -29,6 +30,8 @@ function App() {
     setList(prev => prev.concat(input));
     setInput(prev => (prev = ""));
   };
+
+  // input change
   const handleChange = e => {
     setInput(prev => (prev = e.target.value));
   };
@@ -36,19 +39,24 @@ function App() {
     console.log(input);
     return list.find(element => element === input);
   };
-  // useEffect(() => {
-  //   if (localStorage.getItem("duties")) {
-  //     setList(JSON.parse(localStorage.getItem("duties")));
-  //   }
-  // }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("duties", JSON.stringify(list));
-  // }, [list]);
+  // local storage
+  useEffect(() => {
+    if (localStorage.getItem("duties")) {
+      setList(JSON.parse(localStorage.getItem("duties")));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("duties", JSON.stringify(list));
+  }, [list]);
 
   return (
+    // container
     <div className="todo-container">
       {flashFlag ? <FlashMessages message={flashMessage} /> : ""}
+
+      {/* input field */}
       <div className="input-wrapper">
         <span className="heading-primary">Lets's Get It Done!!</span>
         <input
@@ -66,15 +74,11 @@ function App() {
           Add
         </button>
       </div>
+
+      {/* listing List */}
       {list.map((listItem, index) => {
         return (
-          <List
-            hello={index}
-            todoValue={listItem}
-            setTodoValue={setList}
-            setFlag={setFlag}
-            flag={flag}
-          />
+          <List hello={index} todoValue={listItem} setTodoValue={setList} />
         );
       })}
     </div>
