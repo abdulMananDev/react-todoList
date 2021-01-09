@@ -152,6 +152,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   margin-right: 1.5rem;
+  color: #295939;
 }
 .todoList-wrapper {
   animation: opacity 0.4s ease-out;
@@ -163,4 +164,8 @@ body {
   flex-flow: wrap;
   top: 15%;
   margin-bottom: 1.2rem;
+}
+
+::selection {
+  color: black;
 }

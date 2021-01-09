@@ -4,6 +4,7 @@ import FlashMessages from "./components/FlashMessages";
 import "./index.css";
 
 function App() {
+  const [flag, setFlag] = useState(false);
   const [input, setInput] = useState("");
   const [list, setList] = useState([]);
   const [flashFlag, setFlashFlag] = useState(0);
@@ -35,15 +36,15 @@ function App() {
     console.log(input);
     return list.find(element => element === input);
   };
-  useEffect(() => {
-    if (localStorage.getItem("duties")) {
-      setList(JSON.parse(localStorage.getItem("duties")));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("duties")) {
+  //     setList(JSON.parse(localStorage.getItem("duties")));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("duties", JSON.stringify(list));
-  }, [list]);
+  // useEffect(() => {
+  //   localStorage.setItem("duties", JSON.stringify(list));
+  // }, [list]);
 
   return (
     <div className="todo-container">
@@ -67,7 +68,13 @@ function App() {
       </div>
       {list.map((listItem, index) => {
         return (
-          <List hello={index} todoValue={listItem} setTodoValue={setList} />
+          <List
+            hello={index}
+            todoValue={listItem}
+            setTodoValue={setList}
+            setFlag={setFlag}
+            flag={flag}
+          />
         );
       })}
     </div>

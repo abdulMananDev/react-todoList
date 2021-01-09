@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const List = props => {
-  const [flag, setFlag] = useState(0);
+  const [flag, setFlag] = useState(false);
   const [updateflag, setUpdateFlag] = useState(0);
   const [updationValue, setUpdationValue] = useState();
   const [index, setIndex] = useState(0);
@@ -11,6 +11,7 @@ const List = props => {
   };
 
   const handleDelete = e => {
+    setFlag(prev => !prev);
     props.setTodoValue(prev =>
       prev.filter(filterz => {
         return prev.indexOf(filterz) !== +e.target.id;
@@ -22,7 +23,7 @@ const List = props => {
     setUpdateFlag(prev => (prev = 1));
     setUpdationValue(prev => (prev = props.todoValue));
   };
-  const handleUpdationX = e => {
+  const handleUpdatedValue = e => {
     setUpdationValue(prev => (prev = e.target.value));
   };
   const update = () => {
@@ -41,7 +42,7 @@ const List = props => {
   };
   useEffect(() => {
     if (localStorage.getItem("flags")) {
-      setFlag(JSON.parse(localStorage.getItem("flags")));
+      setFlag(prev => (prev = JSON.parse(localStorage.getItem("flags"))));
     }
   }, []);
 
@@ -60,7 +61,7 @@ const List = props => {
                 placeholder="update-value"
                 id=""
                 value={updationValue}
-                onChange={handleUpdationX}
+                onChange={handleUpdatedValue}
                 spellCheck="false"
                 autoFocus
                 autoCapitalize
