@@ -40,15 +40,15 @@ const List = props => {
     setUpdationValue(prev => (prev = ""));
     setUpdateFlag(prev => (prev = 0));
   };
-  useEffect(() => {
-    if (localStorage.getItem("flags")) {
-      setFlag(prev => (prev = JSON.parse(localStorage.getItem("flags"))));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("flags")) {
+  //     setFlag(prev => (prev = JSON.parse(localStorage.getItem("flags"))));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("flags", JSON.stringify(flag));
-  }, [flag]);
+  // useEffect(() => {
+  //   localStorage.setItem("flags", JSON.stringify(flag));
+  // }, [flag]);
   return (
     <>
       <>
