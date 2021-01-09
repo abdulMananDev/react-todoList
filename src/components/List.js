@@ -49,6 +49,12 @@ const List = props => {
   // useEffect(() => {
   //   localStorage.setItem("flags", JSON.stringify(flag));
   // }, [flag]);
+  let date = new Date();
+  let x = {
+    day: date.getDate(),
+    month: date.getMonth() + 1,
+    year: date.getFullYear()
+  };
   return (
     <>
       <>
@@ -115,6 +121,7 @@ const List = props => {
           ) : (
             ""
           )}
+          <span className="date-text">{`${x.day}-${x.month}-${x.year}`}</span>
         </div>
       </div>
     </>

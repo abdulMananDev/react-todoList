@@ -194,4 +194,12 @@ body {
   background-color: #fff5c0;
   color: #ff4646;
   border: 1px solid #ff4646;
+  margin-right: 1.5rem;
+}
+
+.date-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #777777;
 }
